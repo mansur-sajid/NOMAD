@@ -39,9 +39,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   icons: {
-    marginLeft: 40,
-    paddingTop: 5,
     flexDirection: "row",
+    position: "absolute",
+    right: 0,
+    top: 40
   },
   icon: {
     marginRight: 30, // Add spacing between icons

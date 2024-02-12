@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 import Icon5 from "react-native-vector-icons/Octicons";
 import IIcon from "react-native-vector-icons/Ionicons";
 import FIcon from "react-native-vector-icons/Feather";
@@ -7,6 +7,7 @@ import MIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import CreateOptions from "./CreateOptions";
 
 const Menu = () => {
+    const screenHeight = Dimensions.get("window").height;
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
@@ -18,7 +19,7 @@ const Menu = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={{...styles.container, top: screenHeight - 70}}>
       <View>
         <IIcon
           name="chatbubbles-outline"
@@ -62,7 +63,6 @@ export default Menu;
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: 790,
     flexDirection: "row",
     paddingBottom: 30,
     paddingLeft: 5

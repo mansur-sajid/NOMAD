@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from "react-native";
 
-const PictureSlideshow = () => {
+const PictureSlideShow = () => {
   const screenWidth = Dimensions.get("window").width;
 
   return (
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PictureSlideshow;
+export default PictureSlideShow;
