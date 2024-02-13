@@ -1,24 +1,39 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
 
 const LanguageTranslation = () => {
   const screenWidth = Dimensions.get("window").width;
+  const navigation = useNavigation();
+
+  const goToTranslationPage = () => {
+    navigation.navigate("TranslationPage"); // Navigate to the Translation page when clicked
+  };
+
   return (
-    <View style={{ ...styles.container, width: screenWidth - 30 }}>
-      {/* Left section with weather icon */}
+    <TouchableOpacity
+      onPress={goToTranslationPage}
+      style={{ ...styles.container, width: screenWidth - 30 }}
+    >
+      {/* Left section with translation icon */}
       <View style={styles.leftSection}>
-        <Icon name="sun-o" size={50} color="#FFA500" />
+        <Icon name="language" size={50} color="#007bff" />
       </View>
-      
-      {/* Right section with weather update */}
+
+      {/* Right section with translation update */}
       <View style={styles.rightSection}>
-        <Text style={styles.weatherUpdate}>Weather Update</Text>
-        <Text style={styles.weatherDetail}>Current Temperature: 25°C</Text>
-        <Text style={styles.weatherDetail}>Forecast: Sunny</Text>
-        {/* Add more weather details as needed */}
+        <Text style={styles.translationUpdate}>Language Translation</Text>
+        <Text style={styles.translationDetail}>Translate text instantly</Text>
+        {/* Add more translation details as needed */}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -30,6 +45,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 10,
     flexDirection: "row",
+    marginLeft: 5,
   },
   leftSection: {
     marginRight: 10,
@@ -37,16 +53,14 @@ const styles = StyleSheet.create({
   rightSection: {
     flex: 1,
   },
-  weatherUpdate: {
+  translationUpdate: {
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
-    fontFamily: "Georgia", // Example custom font
   },
-  weatherDetail: {
+  translationDetail: {
     fontSize: 16,
     marginBottom: 5,
-    fontFamily: "Arial", // Example custom font
   },
 });
 

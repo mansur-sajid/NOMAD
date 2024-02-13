@@ -24,7 +24,7 @@ const CreateOptions = ({ visible, onClose }) => {
               <FIcon name="close" size={24} color="#000" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.modalOption} onPress={onClose}>
-              <Text>Option 1</Text>
+              <Text>Create Itinerary</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.modalOption} onPress={onClose}>
               <Text>Option 2</Text>
