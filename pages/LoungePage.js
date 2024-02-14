@@ -7,12 +7,11 @@ import LanguageTranslation from "../components/LanguageTranslation";
 const LoungePage = () => {
   return (
     <View>
-            <PictureSlideShow />
-            <Weather />
-            <LanguageTranslation />
-          </View>
+      <PictureSlideShow />
+      <Weather />
+      <LanguageTranslation />
+    </View>
   );
 };
-
 
 export default LoungePage;

@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Animated } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+  Animated,
+} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 const Weather = () => {
   const screenWidth = Dimensions.get("window").width;
@@ -10,35 +17,35 @@ const Weather = () => {
 
   useEffect(() => {
     Animated.loop(
-      Animated.timing(
-        spinValue,
-        {
-          toValue: 1,
-          duration: 10000, // Adjust the duration here (in milliseconds)
-          useNativeDriver: true,
-        }
-      )
+      Animated.timing(spinValue, {
+        toValue: 1,
+        duration: 10000, // Adjust the duration here (in milliseconds)
+        useNativeDriver: true,
+      })
     ).start();
   }, [spinValue]);
 
   const spin = spinValue.interpolate({
     inputRange: [0, 1],
-    outputRange: ['0deg', '360deg']
+    outputRange: ["0deg", "360deg"],
   });
 
   const goToWeatherPage = () => {
-    navigation.navigate('Weather'); // Navigate to the WeatherPage when clicked
+    navigation.navigate("Weather"); // Navigate to the WeatherPage when clicked
   };
 
   return (
-    <TouchableOpacity onPress={goToWeatherPage} style={{ ...styles.container, width: screenWidth - 30 }}>
+    <TouchableOpacity
+      onPress={goToWeatherPage}
+      style={{ ...styles.container, width: screenWidth - 30 }}
+    >
       {/* Left section with weather icon */}
       <View style={styles.leftSection}>
         <Animated.View style={{ transform: [{ rotate: spin }] }}>
           <Icon name="sun-o" size={50} color="#FFA500" />
         </Animated.View>
       </View>
-      
+
       {/* Right section with weather update */}
       <View style={styles.rightSection}>
         <Text style={styles.weatherUpdate}>Weather Update</Text>
@@ -58,7 +65,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 10,
     flexDirection: "row",
-    marginLeft: 5
+    marginLeft: 5,
   },
   leftSection: {
     marginRight: 10,

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import Icon5 from "react-native-vector-icons/Octicons";
 import IIcon from "react-native-vector-icons/Ionicons";
 import FIcon from "react-native-vector-icons/Feather";
@@ -10,7 +16,7 @@ import CreateOptions from "./CreateOptions";
 const Menu = ({ onIconPress }) => {
   const screenHeight = Dimensions.get("window").height;
   const screenWidth = Dimensions.get("window").width;
-  const [selectedIcon, setSelectedIcon] = useState('chatbubbles-outline'); // Default selected icon
+  const [selectedIcon, setSelectedIcon] = useState("chatbubbles-outline"); // Default selected icon
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
@@ -27,60 +33,82 @@ const Menu = ({ onIconPress }) => {
   };
 
   return (
-    <View style={{ ...styles.container, top: screenHeight - 70, width: screenWidth }}>
-      <TouchableOpacity onPress={() => handleIconPress('chatbubbles-outline')}>
+    <View
+      style={{
+        ...styles.container,
+        top: screenHeight - 70,
+        width: screenWidth,
+      }}
+    >
+      <TouchableOpacity onPress={() => handleIconPress("chatbubbles-outline")}>
         <View style={{ ...styles.option, marginLeft: 5 }}>
           <IIcon
             name="chatbubbles-outline"
             size={22}
-            color={selectedIcon === 'chatbubbles-outline' ? "#00FF17" : "black"}
+            color={selectedIcon === "chatbubbles-outline" ? "#00FF17" : "black"}
             style={styles.icon}
           />
-          <Text style={{ color: selectedIcon === 'chatbubbles-outline' ? "#00FF17" : "black" }}>lounge</Text>
+          <Text
+            style={{
+              color:
+                selectedIcon === "chatbubbles-outline" ? "#00FF17" : "black",
+            }}
+          >
+            lounge
+          </Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleIconPress('people')}>
+      <TouchableOpacity onPress={() => handleIconPress("people")}>
         <View style={styles.option}>
           <Icon5
             name="people"
             size={22}
-            color={selectedIcon === 'people' ? "#00FF17" : "black"}
+            color={selectedIcon === "people" ? "#00FF17" : "black"}
             style={styles.icon}
           />
-          <Text style={{ color: selectedIcon === 'people' ? "#00FF17" : "black" }}>Buddy</Text>
+          <Text
+            style={{ color: selectedIcon === "people" ? "#00FF17" : "black" }}
+          >
+            Buddy
+          </Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity
-        style={{...styles.option, ...styles.addButton}}
+        style={{ ...styles.option, ...styles.addButton }}
         onPress={openModal}
       >
-        <IIcon name="add" size={30} color="white" style={{marginBottom:0}} />
+        <IIcon name="add" size={30} color="white" style={{ marginBottom: 0 }} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleIconPress('map')}>
+      <TouchableOpacity onPress={() => handleIconPress("map")}>
         <View style={styles.option}>
           <FFIcon
             name="map"
             size={22}
-            color={selectedIcon === 'map' ? "#00FF17" : "black"}
-            style={{...styles.icon, marginLeft:-0}}
+            color={selectedIcon === "map" ? "#00FF17" : "black"}
+            style={{ ...styles.icon, marginLeft: -0 }}
           />
-          <Text style={{ color: selectedIcon === 'map' ? "#00FF17" : "black" }}>Map</Text>
+          <Text style={{ color: selectedIcon === "map" ? "#00FF17" : "black" }}>
+            Map
+          </Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleIconPress('account')}>
+      <TouchableOpacity onPress={() => handleIconPress("account")}>
         <View style={styles.option}>
           <MIcon
             name="account"
             size={22}
-            color={selectedIcon === 'account' ? "#00FF17" : "black"}
+            color={selectedIcon === "account" ? "#00FF17" : "black"}
             style={styles.icon}
           />
-          <Text style={{ color: selectedIcon === 'account' ? "#00FF17" : "black" }}>Profile</Text>
+          <Text
+            style={{ color: selectedIcon === "account" ? "#00FF17" : "black" }}
+          >
+            Profile
+          </Text>
         </View>
       </TouchableOpacity>
 
       <CreateOptions visible={modalVisible} onClose={closeModal} />
-      
     </View>
   );
 };
@@ -107,6 +135,6 @@ const styles = StyleSheet.create({
     marginTop: 0, // Adjusting the position of the "add" icon
   },
   icon: {
-    marginLeft: 8
+    marginLeft: 8,
   },
 });

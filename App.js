@@ -9,6 +9,9 @@ import TranslationPage from "./pages/TranslationPage";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { useEffect } from "react";
+import AlertPage from "./pages/AlertPage";
+import MessagePage from "./pages/MessagePage";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +52,8 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen name="Weather" component={WeatherPage} />
+            <Stack.Screen name="AlertPage" component={AlertPage} options={{title: "Alerts"}}/>
+            <Stack.Screen name="MessagePage" component={MessagePage} options={{title: "Messages"}}/>
             <Stack.Screen
               name="languageSelect"
               component={LanguageSelectScreen}

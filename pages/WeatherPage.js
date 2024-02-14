@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Dimensions, ImageBackground, TouchableOpacity, Modal, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  ImageBackground,
+  TouchableOpacity,
+  Modal,
+  TextInput,
+} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import WIcon from "react-native-vector-icons/Fontisto";
 import RIcon from "react-native-vector-icons/Ionicons";
@@ -22,7 +31,12 @@ const WeatherPage = () => {
 
   useEffect(() => {
     // Update recent cities list when current city changes
-    setRecentCities(prevCities => [currentCity, ...prevCities.filter(item => item !== currentCity)].slice(0, 2));
+    setRecentCities((prevCities) =>
+      [currentCity, ...prevCities.filter((item) => item !== currentCity)].slice(
+        0,
+        2
+      )
+    );
   }, [currentCity]);
 
   const fetchWeatherData = (city) => {
@@ -52,7 +66,9 @@ const WeatherPage = () => {
   const generateDummyForecastData = () => {
     const forecasts = [];
     for (let i = 0; i < 5; i++) {
-      const day = new Date(Date.now() + i * 24 * 60 * 60 * 1000).toLocaleDateString("en-US", { weekday: "long" });
+      const day = new Date(
+        Date.now() + i * 24 * 60 * 60 * 1000
+      ).toLocaleDateString("en-US", { weekday: "long" });
       const forecast = getRandomForecast();
       const temperature = Math.floor(Math.random() * (40 - 10) + 10) + "°C";
       forecasts.push({ day, forecast, temperature });
@@ -67,7 +83,9 @@ const WeatherPage = () => {
     // Close the modal after city selection
     setModalVisible(false);
     // Add the selected city to recentCities list
-    setRecentCities(prevCities => [city, ...prevCities.filter(item => item !== city)].slice(0, 2));
+    setRecentCities((prevCities) =>
+      [city, ...prevCities.filter((item) => item !== city)].slice(0, 2)
+    );
   };
 
   const handleSearch = () => {
@@ -82,7 +100,12 @@ const WeatherPage = () => {
     // Close the modal after city search
     setModalVisible(false);
     // Add the searched city to recentCities list
-    setRecentCities(prevCities => [searchText, ...prevCities.filter(item => item !== searchText)].slice(0, 2));
+    setRecentCities((prevCities) =>
+      [searchText, ...prevCities.filter((item) => item !== searchText)].slice(
+        0,
+        2
+      )
+    );
   };
 
   const renderWeatherIcon = (forecast) => {
@@ -101,58 +124,66 @@ const WeatherPage = () => {
   };
 
   return (
-    
-      <View style={styles.container}>
-        <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.cityPicker}>
-          <Text style={styles.cityPickerText}>{currentCity}</Text>
-          <Icon name="chevron-down" size={20} color="#FFF" />
-        </TouchableOpacity>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search City..."
-          value={searchText}
-          onChangeText={(text) => setSearchText(text)}
-          onSubmitEditing={handleSearch}
-        />
-        <View style={styles.currentWeatherContainer}>
-          <View style={styles.weatherIconContainer}>
-            {renderWeatherIcon(currentForecast)}
-          </View>
-          <View style={styles.weatherDetailsContainer}>
-            <Text style={styles.currentTemperature}>{currentTemperature}</Text>
-            <Text style={styles.weatherDetail}>Forecast: {currentForecast}</Text>
-            <
-
-Text style={styles.weatherDetail}>Humidity: {currentHumidity}</Text>
-            <Text style={styles.weatherDetail}>Wind Speed: {currentWindSpeed}</Text>
-          </View>
+    <View style={styles.container}>
+      <TouchableOpacity
+        onPress={() => setModalVisible(true)}
+        style={styles.cityPicker}
+      >
+        <Text style={styles.cityPickerText}>{currentCity}</Text>
+        <Icon name="chevron-down" size={20} color="#FFF" />
+      </TouchableOpacity>
+      <TextInput
+        style={styles.searchInput}
+        placeholder="Search City..."
+        value={searchText}
+        onChangeText={(text) => setSearchText(text)}
+        onSubmitEditing={handleSearch}
+      />
+      <View style={styles.currentWeatherContainer}>
+        <View style={styles.weatherIconContainer}>
+          {renderWeatherIcon(currentForecast)}
         </View>
-        <View style={styles.forecastContainer}>
-          {forecastData.map((item, index) => (
-            <View key={index} style={styles.forecastItem}>
-              <Text style={styles.forecastDay}>{item.day}</Text>
-              <Text style={{...styles.forecastDetail, marginRight: 20}}>{item.forecast}</Text>
-              <Text style={styles.forecastDetail}>{item.temperature}</Text>
-            </View>
-          ))}
+        <View style={styles.weatherDetailsContainer}>
+          <Text style={styles.currentTemperature}>{currentTemperature}</Text>
+          <Text style={styles.weatherDetail}>Forecast: {currentForecast}</Text>
+          <Text style={styles.weatherDetail}>Humidity: {currentHumidity}</Text>
+          <Text style={styles.weatherDetail}>
+            Wind Speed: {currentWindSpeed}
+          </Text>
         </View>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => setModalVisible(false)}
-        >
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              {recentCities.map((city, index) => (
-                <TouchableOpacity key={index} onPress={() => handleCityChange(city)} style={styles.modalItem}>
-                  <Text style={styles.modalItemText}>{city}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </View>
-        </Modal>
       </View>
+      <View style={styles.forecastContainer}>
+        {forecastData.map((item, index) => (
+          <View key={index} style={styles.forecastItem}>
+            <Text style={styles.forecastDay}>{item.day}</Text>
+            <Text style={{ ...styles.forecastDetail, marginRight: 20 }}>
+              {item.forecast}
+            </Text>
+            <Text style={styles.forecastDetail}>{item.temperature}</Text>
+          </View>
+        ))}
+      </View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            {recentCities.map((city, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => handleCityChange(city)}
+                style={styles.modalItem}
+              >
+                <Text style={styles.modalItemText}>{city}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      </Modal>
+    </View>
   );
 };
 
@@ -187,7 +218,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15, // Adjusted padding for better appearance
     marginBottom: 20,
     height: 40, // Adjusted height for better appearance
-    elevation: 1
+    elevation: 1,
   },
   currentWeatherContainer: {
     alignItems: "center",
@@ -236,7 +267,7 @@ const styles = StyleSheet.create({
   forecastDetail: {
     fontSize: 16,
     color: "#333",
-  },  
+  },
   modalContainer: {
     flex: 1,
     justifyContent: "center",

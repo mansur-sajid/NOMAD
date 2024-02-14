@@ -48,7 +48,7 @@ const ImageWithOverlay = ({ text, source, screenWidth }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    marginTop: 200,
+    marginTop: 20,
   },
   imageContainer: {
     position: "relative",
