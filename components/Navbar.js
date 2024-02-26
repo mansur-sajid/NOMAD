@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   mainText: {
     fontSize: 20,
-    color: "#00FF17",
+    color: "#66cc99",
     fontFamily: "serif",
     fontWeight: "bold",
   },

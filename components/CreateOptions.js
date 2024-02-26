@@ -8,8 +8,21 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import FIcon from "react-native-vector-icons/AntDesign";
+import { useNavigation } from "@react-navigation/native";
 
 const CreateOptions = ({ visible, onClose }) => {
+  const navigation = useNavigation();
+
+  const navigateToCreateItinerary = () => {
+    navigation.navigate("CreateItineraryPage"); // Replace "CreateItineraryPage" with your actual screen name
+    onClose(); // Close the modal after navigation
+  };
+
+  const navigateToCustomItinerary = () => {
+    navigation.navigate("CustomItineraryPage"); // Replace "CustomItineraryPage" with your actual screen name
+    onClose(); // Close the modal after navigation
+  };
+
   return (
     <Modal
       animationType="none"
@@ -23,11 +36,20 @@ const CreateOptions = ({ visible, onClose }) => {
             <TouchableOpacity style={styles.closeButton} onPress={onClose}>
               <FIcon name="close" size={24} color="#000" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.modalOption} onPress={onClose}>
-              <Text>Create Itinerary</Text>
+            <TouchableOpacity
+              style={{...styles.modalOption, borderBottomColor: "#a4a6a5",
+              borderBottomWidth: 1,}}
+              onPress={navigateToCreateItinerary}
+            >
+              <FIcon name="plus" size={24} color="#000" style={{marginBottom: 25}}/>
+              <Text style={styles.optionText}>Create Itinerary</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.modalOption} onPress={onClose}>
-              <Text>Option 2</Text>
+            <TouchableOpacity
+              style={styles.modalOption}
+              onPress={navigateToCustomItinerary}
+            >
+              <FIcon name="tool" size={24} color="#000" style={{marginBottom: 25}}/>
+              <Text style={styles.optionText}>Custom Itinerary</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -47,13 +69,18 @@ const styles = StyleSheet.create({
   modalContent: {
     height: 150,
     backgroundColor: "#fff",
-    padding: 20,
+    padding: 30,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    alignItems: "center",
   },
   modalOption: {
-    marginBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 15,
+  },
+  optionText: {
+    marginLeft: 10,
+    marginBottom: 30
   },
   closeButton: {
     position: "absolute",

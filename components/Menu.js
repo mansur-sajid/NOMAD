@@ -45,13 +45,13 @@ const Menu = ({ onIconPress }) => {
           <IIcon
             name="chatbubbles-outline"
             size={22}
-            color={selectedIcon === "chatbubbles-outline" ? "#00FF17" : "black"}
+            color={selectedIcon === "chatbubbles-outline" ? "#66cc99" : "black"}
             style={styles.icon}
           />
           <Text
             style={{
               color:
-                selectedIcon === "chatbubbles-outline" ? "#00FF17" : "black",
+                selectedIcon === "chatbubbles-outline" ? "#66cc99" : "black",
             }}
           >
             lounge
@@ -63,11 +63,11 @@ const Menu = ({ onIconPress }) => {
           <Icon5
             name="people"
             size={22}
-            color={selectedIcon === "people" ? "#00FF17" : "black"}
+            color={selectedIcon === "people" ? "#66cc99" : "black"}
             style={styles.icon}
           />
           <Text
-            style={{ color: selectedIcon === "people" ? "#00FF17" : "black" }}
+            style={{ color: selectedIcon === "people" ? "#66cc99" : "black" }}
           >
             Buddy
           </Text>
@@ -84,10 +84,10 @@ const Menu = ({ onIconPress }) => {
           <FFIcon
             name="map"
             size={22}
-            color={selectedIcon === "map" ? "#00FF17" : "black"}
+            color={selectedIcon === "map" ? "#66cc99" : "black"}
             style={{ ...styles.icon, marginLeft: -0 }}
           />
-          <Text style={{ color: selectedIcon === "map" ? "#00FF17" : "black" }}>
+          <Text style={{ color: selectedIcon === "map" ? "#66cc99" : "black" }}>
             Map
           </Text>
         </View>
@@ -97,11 +97,11 @@ const Menu = ({ onIconPress }) => {
           <MIcon
             name="account"
             size={22}
-            color={selectedIcon === "account" ? "#00FF17" : "black"}
+            color={selectedIcon === "account" ? "#66cc99" : "black"}
             style={styles.icon}
           />
           <Text
-            style={{ color: selectedIcon === "account" ? "#00FF17" : "black" }}
+            style={{ color: selectedIcon === "account" ? "#66cc99" : "black" }}
           >
             Profile
           </Text>
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   },
   addButton: {
     borderRadius: 30,
-    backgroundColor: "#00FF17",
+    backgroundColor: "#66cc99",
     padding: 10,
     marginTop: 0, // Adjusting the position of the "add" icon
   },

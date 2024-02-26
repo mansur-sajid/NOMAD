@@ -14,6 +14,10 @@ import MessagePage from "./pages/MessagePage";
 import Login from "./pages/Login";
 import Welcome from "./pages/Welcome";
 import Signup from "./pages/Signup";
+import RecommendationPage from "./pages/RecommendationPage";
+import CreateItineraryPage from "./pages/CreateItineraryPage";
+import CustomItineraryPage from "./pages/CustomItineraryPage";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -53,6 +57,9 @@ export default function App() {
             <Stack.Screen name="Weather" component={WeatherPage} />
             <Stack.Screen name="AlertPage" component={AlertPage} options={{title: "Alerts"}}/>
             <Stack.Screen name="MessagePage" component={MessagePage} options={{title: "Messages"}}/>
+            <Stack.Screen name="RecommendationPage" component={RecommendationPage} options={{title: "Local Recommendations"}}/>
+            <Stack.Screen name="CreateItineraryPage" component={CreateItineraryPage} options={{title: "Create Itinerary"}}/>
+            <Stack.Screen name="CustomItineraryPage" component={CustomItineraryPage} options={{title: "Custom Itinerary"}}/>
             <Stack.Screen
               name="languageSelect"
               component={LanguageSelectScreen}

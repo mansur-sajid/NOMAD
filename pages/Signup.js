@@ -296,7 +296,7 @@ const Signup = ({ navigation }) => {
             <Text
               style={{
                 fontSize: 16,
-                color: '#00FF17',
+                color: '#66cc99',
                 fontWeight: "bold",
                 marginLeft: 6,
               }}

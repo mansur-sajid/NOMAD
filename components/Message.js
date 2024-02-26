@@ -1,10 +1,10 @@
 // Message.js
 
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import Swipeable from "react-native-swipeable";
 
-const Message = ({ id, sender, message, onDelete }) => {
+const Message = ({ id, sender, message, profilePic, onDelete }) => {
   const rightContent = [
     <TouchableOpacity key={id} style={styles.deleteButton} onPress={onDelete}>
       <Text style={styles.deleteText}>Delete</Text>
@@ -14,11 +14,14 @@ const Message = ({ id, sender, message, onDelete }) => {
   return (
     <Swipeable rightButtons={rightContent} rightButtonWidth={75}>
       <View style={styles.messageContainer}>
-        <View style={styles.message}>
-          <Text style={styles.title}>{sender}</Text>
-          <Text style={styles.messageText} numberOfLines={2}>
-            {message}
-          </Text>
+        <View style={styles.profileContainer}>
+          {/* Profile picture */}
+          <Image source={profilePic} style={styles.profilePic} />
+        </View>
+        <View style={styles.messageContent}>
+          {/* Sender and message content */}
+          <Text style={styles.sender}>{sender}</Text>
+          <Text style={styles.messageText} numberOfLines={2}>{message}</Text>
         </View>
       </View>
     </Swipeable>
@@ -27,7 +30,8 @@ const Message = ({ id, sender, message, onDelete }) => {
 
 const styles = StyleSheet.create({
   messageContainer: {
-    height: 90,
+    flexDirection: "row",
+    alignItems: "center",
     backgroundColor: "#f0f0f0",
     padding: 10,
     borderRadius: 5,
@@ -35,21 +39,34 @@ const styles = StyleSheet.create({
     elevation: 5,
     marginTop: 10,
   },
-  message: {},
-  title: {
+  profileContainer: {
+    marginRight: 10,
+  },
+  profilePic: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  messageContent: {
+    flex: 1,
+    padding: 2
+  },
+  sender: {
     fontWeight: "bold",
-    marginRight: 5,
+    marginBottom: 5,
   },
   messageText: {
-    fontSize: 16,
+    fontSize: 12,
   },
   deleteButton: {
     backgroundColor: "red",
     justifyContent: "center",
     alignItems: "center",
     width: 75,
-    height: 90,
+    height: 83,
     marginTop: 10,
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5
   },
   deleteText: {
     color: "white",
